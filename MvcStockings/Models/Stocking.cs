@@ -8,8 +8,10 @@ namespace MvcStockings.Models
     public class Stocking
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string Type { get; set; }
         public string Material { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
+        public int Review { get; set; }
     }
 }
