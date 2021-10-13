@@ -7,18 +7,14 @@ using System.Threading.Tasks;
 
 namespace MvcStockings.Controllers
 {
-    public class Products : Controller
+    public class About : Controller
     {
         public IActionResult Index()
         {
+            //Retruns the About page when it is called
             return View();
         }
 
-        public IActionResult Welcome(string name, int numTimes = 1)
-        {
-            ViewData["Message"] = "Hello " + name;
-            ViewData["NumTimes"] = numTimes;
-            return View();
-        }
+        
     }
 }

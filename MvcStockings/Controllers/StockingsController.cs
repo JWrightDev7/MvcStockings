@@ -20,9 +20,42 @@ namespace MvcStockings.Controllers
         }
 
         // GET: Stockings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string StockingType, string search)
         {
-            return View(await _context.Stocking.ToListAsync());
+            //Creates the query to select the different stockings based on the filter
+            IQueryable<string> typeQuery = from t in _context.Stocking
+                                           orderby t.Type
+                                           select t.Type;
+
+            //Creates the query to search for the stocking with a name equal to the search
+            var stockings = from s in _context.Stocking
+                            select s;
+
+            //Checks to make sure the search is not empty
+            if (!String.IsNullOrEmpty(search))
+            {
+                //inserts the name field into the query to check for matches
+                stockings = stockings.Where(q => q.Name.Contains(search));
+            }
+
+            //Checks if stocking type is empty in the filter
+            if (!string.IsNullOrEmpty(StockingType))
+            {
+                //If the filter is not empty then it will match all stockings with the type in the filter and display them
+                stockings = stockings.Where(x => x.Type == StockingType);
+            }
+
+            //Creates the different lists based on the filter / search method
+            var stockingTypeVM = new StockingTypeViewModel
+            {
+                Types = new SelectList(await typeQuery.Distinct().ToListAsync()),
+                Stockings = await stockings.ToListAsync()
+            };
+
+            //returns the new list of stockings after the search or filter
+            return View(stockingTypeVM);
+            
+            
         }
 
         // GET: Stockings/Details/5

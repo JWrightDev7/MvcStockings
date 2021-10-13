@@ -9,7 +9,7 @@ using MvcStockings.Data;
 namespace MvcStockings.Migrations
 {
     [DbContext(typeof(MvcStockingsContext))]
-    [Migration("20211013144646_InitialCreate")]
+    [Migration("20211013155813_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ namespace MvcStockings.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("Review")
                         .HasColumnType("int");
