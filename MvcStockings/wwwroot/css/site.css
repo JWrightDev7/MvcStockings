@@ -3,7 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 *{
     font-family:'OCR A';
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
 }
 
 a.navbar-brand {
@@ -89,21 +89,39 @@ div#examples{
     margin: 0 auto;
     display: flex;
     flex-wrap:wrap;
+    margin-bottom: 75px;
 }
 
-
-div#examples img {
+div#examples a {
     width: 30%;
+    margin: 0 auto;
     padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
-    margin: 10px auto;
     box-shadow: blue -5px 5px 20px;
+    margin: 10px auto;
 }
 
-div#examples img:last-of-type{
-    margin: 0 auto;
+div#examples a:hover{
+    box-shadow: orange -5px 5px 20px;
 }
+
+div#examples img {
+    width: 75%;
+}
+
+div#examples a:nth-of-type(9) img{
+    width: 70%;
+}
+
+div#examples a:nth-of-type(6){
+    height: auto;
+    box-sizing: border-box;
+    padding-top: 7%;
+}
+
+
+
 
 .AboutHeading{
     text-align:center;
