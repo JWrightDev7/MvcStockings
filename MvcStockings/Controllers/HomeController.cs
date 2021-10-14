@@ -27,6 +27,12 @@ namespace MvcStockings.Controllers
         {
             return View();
         }
+        
+        //Added the ability to goto the about page by using /Home/About while also allowing the use of /About
+        public IActionResult About()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
